@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature Resort & Camp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .menu-item:hover, .accommodation-item:hover, .experience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .testimonial-card:hover {
+            transform: scale(1.03);
+        }
+        .package-card:hover {
+            transform: scale(1.05);
+        }
+        .nav-link:hover {
+            color: #162b04;
+        }
+        .btn-hover:hover {
+            background-color: #162b04;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-[#162b04] shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center text-white">
+                <span class="text-3xl font-bold  ">R</span>
+                <span class="ml-2 text-xl font-semibold ">Our Resort</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="nav-link text-gray-50 hover:text-black font-medium transition">HOME</a>
+                <a href="#" class="nav-link text-gray-50 hover:text-black font-medium transition">ROOM</a>
+                <a href="#" class="nav-link text-gray-50 hover:text-black font-medium transition">Testimonials</a>
+                <a href="#" class="nav-link text-gray-50 hover:text-black font-medium transition">Restaurant</a>
+                <a href="#" class="nav-link text-gray-50 hover:text-black font-medium transition">Packages</a>
+                <a href="Gallery.html" class="nav-link text-gray-50 hover:text-black font-medium transition">GALLERY</a>
+                <a href="#" class="nav-link text-gray-50 hover:text-black font-medium transition">CONTACT</a>
+            </div>
+            
+            <button class="md:hidden text-gray-700" title="#">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            
+            <button class="hidden md:block bg-black text-white px-6 py-2 rounded-full font-medium hover:bg-white hover:text-black transition">Book Now</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative h-96 md:h-screen bg-[url('https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center">
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div class="relative container mx-auto px-4 h-full flex flex-col justify-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">Discover Nature's Paradise</h1>
+            <p class="text-xl text-white mb-8 max-w-2xl">Experience the perfect blend of luxury and adventure in our serene resort and camp.</p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <button class="bg-[#162b04] text-white px-8 py-3 rounded-full font-medium hover:bg-[#162b04]/50 transition">Explore Packages</button>
+                <button class="bg-white text-black-600 px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition">Watch Video</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Our Menu</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Menu Item 1 -->
+                <div class="menu-item bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 bg-[url('Image/pizza.jpg')] bg-cover bg-center"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Margherita Pizza</h3>
+                        <p class="text-gray-600 mb-4">Classic Italian pizza.</p>
+                        <button class="btn-hover border-2 border-black-600 text-black px-6 py-2 rounded-full font-medium transition">Reserve</button>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 2 -->
+                <div class="menu-item bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 bg-[url('Image/veg dum.jpg')] bg-cover bg-center"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Veg Dum Biryani</h3>
+                        <p class="text-gray-600 mb-4">Veg Biriyani is always prepared.</p>
+                        <button class="btn-hover border-2 border-black-600 text-black px-6 py-2 rounded-full font-medium transition">Reserve</button>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 3 -->
+                <div class="menu-item bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 bg-[url('Image/noodles.jpg')] bg-cover bg-center"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Noodles masala</h3>
+                        <p class="text-gray-600 mb-4">Healthy protein meal.</p>
+                        <button class="btn-hover border-2 border-black-600 text-black px-6 py-2 rounded-full font-medium transition">Reserve</button>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 4 -->
+                <div class="menu-item bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 bg-[url('Image/Panner.jpg')] bg-cover bg-center"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Paneer Butter Masala</h3>
+                        <p class="text-gray-600 mb-4">Healthy protein meal.</p>
+                        <button class="btn-hover border-2 border-black-600 text-black px-6 py-2 rounded-full font-medium transition">Reserve</button>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 5 -->
+                <div class="menu-item bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 bg-[url('Image/mushroom-soup.jpg')] bg-cover bg-center"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Mushroom Soup</h3>
+                        <p class="text-gray-600 mb-4">Perfect for cold days.</p>
+                        <button class="btn-hover border-2 border-black-600 text-black px-6 py-2 rounded-full font-medium transition">Reserve</button>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 6 -->
+                <div class="menu-item bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 bg-[url('Image/Daal M.jpg')] bg-cover bg-center"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Dal Makhani</h3>
+                        <p class="text-gray-600 mb-4">Perfect for punjabi, North india.</p>
+                        <button class="btn-hover border-2 border-black-600 text-black px-6 py-2 rounded-full font-medium transition">Reserve</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-amber-600 text-white px-8 py-3 rounded-full font-medium hover:bg-amber-700 transition">Reserve a Table</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accommodations Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Accommodations</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Accommodation 1 -->
+                <div class="accommodation-item bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-56 bg-[url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Cozy Cabin</h3>
+                        <p class="text-gray-600 mb-4">Nestled in the woods with a serene view.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600 font-medium">Available this weekend</span>
+                            <button class="text-amber-600 font-medium hover:underline">Check Availability</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accommodation 2 -->
+                <div class="accommodation-item bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-56 bg-[url('https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">City Apartment</h3>
+                        <p class="text-gray-600 mb-4">Located in the heart of downtown.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-yellow-600 font-medium">Few slots left</span>
+                            <button class="text-amber-600 font-medium hover:underline">Check Availability</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accommodation 3 -->
+                <div class="accommodation-item bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-56 bg-[url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Beach Bungalow</h3>
+                        <p class="text-gray-600 mb-4">Enjoy the sound of waves all day.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600 font-medium">Available next week</span>
+                            <button class="text-amber-600 font-medium hover:underline">Check Availability</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accommodation 4 -->
+                <div class="accommodation-item bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-56 bg-[url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Luxury Villa</h3>
+                        <p class="text-gray-600 mb-4">Perfect for family vacations.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600 font-medium">Available now</span>
+                            <button class="text-amber-600 font-medium hover:underline">Check Availability</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Camp Experiences Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Camp Experiences</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Experience 1 -->
+                <div class="experience-item bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-64 bg-[url('https://images.unsplash.com/photo-1510227272981-87123e259b17?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Rock Climbing</h3>
+                        <p class="text-gray-600 mb-6">Experience the thrill of climbing natural rock formations and pushing your limits.</p>
+                        <button class="btn-hover border border-amber-600 text-amber-600 px-6 py-2 rounded-full font-medium transition">Book Now</button>
+                    </div>
+                </div>
+                
+                <!-- Experience 2 -->
+                <div class="experience-item bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-64 bg-[url('https://images.unsplash.com/photo-1501554728187-ce583db33af7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Canyon Trekking</h3>
+                        <p class="text-gray-600 mb-6">Navigate through stunning canyons with breathtaking views and challenging terrain.</p>
+                        <button class="btn-hover border border-amber-600 text-amber-600 px-6 py-2 rounded-full font-medium transition">Book Now</button>
+                    </div>
+                </div>
+                
+                <!-- Experience 3 -->
+                <div class="experience-item bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-64 bg-[url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Abseiling</h3>
+                        <p class="text-gray-600 mb-6">Descend from cliffs or trees safely with expert guidance and enjoy the rush.</p>
+                        <button class="btn-hover border border-amber-600 text-amber-600 px-6 py-2 rounded-full font-medium transition">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <!-- <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden p-8 testimonial-card transition duration-300">
+                <p class="text-xl italic text-gray-700 mb-6">"NatureNest transformed my vacation experience. The serene environment and eco-friendly accommodations were perfect for relaxation. Highly recommend!"</p>
+                <div class="flex items-center">
+                    <div class="h-12 w-12 rounded-full bg-gray-300 overflow-hidden">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Emily Rodriguez" class="h-full w-full object-cover">
+                    </div>
+                    <div class="ml-4">
+                        <h4 class="font-semibold">Sumit Raj</h4>
+                        <p class="text-gray-600">Travel Blogger</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <body class="relative h-screen">
+
+        <!-- Floating Action Buttons -->
+        <div class="fixed bottom-8 right-8 flex flex-col space-y-4 z-50">
+            <!-- WhatsApp Button -->
+            <a href="https://wa.me/1234567890" title="_blank"
+               class="w-14 h-14 bg-green-500 rounded-full shadow-lg flex items-center justify-center transition-transform transform hover:scale-110 hover:shadow-xl">
+                <img src="whatsapp.svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" class="w-7 h-7">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M12 20.75c4.694 0 8.5-3.806 8.5-8.5S16.694 3.75 12 3.75A8.476 8.476 0 003.5 12c0 1.378.334 2.678.926 3.826l-1.011 3.79a.75.75 0 00.94.94l3.79-1.011A8.475 8.475 0 0012 20.75z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M12 16.75c2.623 0 4.75-2.127 4.75-4.75S14.623 7.25 12 7.25a4.756 4.756 0 00-4.75 4.75c0 2.623 2.127 4.75 4.75 4.75z"/>
+                </img>
+            </a>
+    
+            <!-- Call Button -->
+            <a href="tel:+1234567890" title="_blank"
+               class="w-14 h-14 bg-green-500 rounded-full shadow-lg flex items-center justify-center transition-transform transform hover:scale-110 hover:shadow-xl">
+                <img src="phone.svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" class="w-7 h-7">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M15.232 12.768l-2.5-2.5a1 1 0 00-1.5 1.32l.086.094 2.5 2.5a1 1 0 001.32.083l.094-.083a1 1 0 00.083-1.32l-.083-.094-2.5-2.5 2.5 2.5z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M17.586 5.414A2 2 0 0119 7v10a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 011.414-1.586L12 3.5l5.586 1.914z"/>
+                </img>
+            </a>
+        </div>
+    
+    </body>
+
+    <!-- Packages Section -->
+    <section class="py-16 bg-amber-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Limited-Time Packages</h2>
+                <p class="text-xl max-w-2xl mx-auto">Explore exclusive seasonal offers and save on your next adventure. Act now before they're gone!</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Package 1 -->
+                <div class="package-card bg-white text-gray-800 rounded-lg shadow-xl overflow-hidden transition duration-300">
+                    <div class="h-48 bg-[url('https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Mountain Retreat</h3>
+                        <p class="text-gray-600 mb-4">3 days, 2 nights in our cozy cabins with guided hikes.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-amber-600">$299</span>
+                            <button class="bg-amber-600 text-white px-6 py-2 rounded-full font-medium hover:bg-amber-700 transition">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Package 2 -->
+                <div class="package-card bg-white text-gray-800 rounded-lg shadow-xl overflow-hidden transition duration-300">
+                    <div class="h-48 bg-[url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Beach Escape</h3>
+                        <p class="text-gray-600 mb-4">4 days, 3 nights in our beachfront bungalows.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-amber-600">$399</span>
+                            <button class="bg-amber-600 text-white px-6 py-2 rounded-full font-medium hover:bg-amber-700 transition">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Package 3 -->
+                <div class="package-card bg-white text-gray-800 rounded-lg shadow-xl overflow-hidden transition duration-300">
+                    <div class="h-48 bg-[url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Adventure Combo</h3>
+                        <p class="text-gray-600 mb-4">5 days of rock climbing, trekking and abseiling.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-amber-600">$499</span>
+                            <button class="bg-amber-600 text-white px-6 py-2 rounded-full font-medium hover:bg-amber-700 transition">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Destination -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <div class="h-96 bg-[url('https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center rounded-xl"></div>
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-6">Our Resort</h2>
+                    <p class="text-gray-700 mb-6">Resort town stands at the head of a deep valley of magnificent rice terraces that are still farmed today as they have been for centuries. Backdrops don't get much more spectacular.</p>
+                    <button class="bg-amber-600 text-white px-8 py-3 rounded-full font-medium hover:bg-amber-700 transition">Learn more</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Contact & Location</h2>
+            
+            <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-md p-8 border-2">
+                <form>
+                    <div class="mb-6">
+                        <label for="name" class="block text-gray-700 font-medium mb-2">Your Name (required)</label>
+                        <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="email" class="block text-gray-700 font-medium mb-2">Your Email (required)</label>
+                        <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-medium mb-2">Please write your message here...</label>
+                        <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-amber-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-amber-700 transition">SUBMIT</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Features</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Pricing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Our Resort</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Our Menu</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Help Center</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">FAQs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Terms</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Sitemap</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Subscribe to our newsletter</h3>
+                    <div class="flex mb-4">
+                        <input type="email" placeholder="Input your email" class="px-4 py-2 w-full rounded-l-lg text-gray-800 focus:outline-none">
+                        <button class="bg-amber-600 px-4 py-2 rounded-r-lg hover:bg-amber-700 transition">Subscribe</button>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="mr-2">English</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 NatureNest, Inc. • Privacy • Terms • Sitemap</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.querySelector('button.md\\:hidden').addEventListener('click', function() {
+            const navLinks = document.querySelector('.hidden.md\\:flex');
+            navLinks.classList.toggle('hidden');
+            navLinks.classList.toggle('flex');
+            navLinks.classList.toggle('flex-col');
+            navLinks.classList.toggle('absolute');
+            navLinks.classList.toggle('top-16');
+            navLinks.classList.toggle('left-0');
+            navLinks.classList.toggle('right-0');
+            navLinks.classList.toggle('bg-white');
+            navLinks.classList.toggle('shadow-md');
+            navLinks.classList.toggle('p-4');
+            navLinks.classList.toggle('space-y-4');
+            navLinks.classList.toggle('space-x-8');
+        });
+    </script>
+</body>
+</html>

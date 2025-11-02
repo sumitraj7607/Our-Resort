@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gallery-item {
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .lightbox-img {
+            max-height: 80vh;
+            max-width: 90vw;
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            padding: 10px 15px;
+            border-radius: 50%;
+        }
+        .prev-btn {
+            left: 30px;
+        }
+        .next-btn {
+            right: 30px;
+        }
+        .caption {
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .view-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .gallery-item:hover .view-overlay {
+            opacity: 1;
+        }
+        .view-text {
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            background-color: rgba(0,0,0,0.7);
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <section class="py-12 px-4">
+        <div class="container mx-auto">
+            <h1 class="text-3xl font-bold text-center mb-8">Gallery</h1>
+            
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center mb-8 gap-2">
+                <button class="filter-btn px-4 py-2 bg-blue-600 text-white rounded-md active" data-filter="all">All</button>
+                <button class="filter-btn px-4 py-2 bg-gray-300 rounded-md" data-filter="osian-excursion">Osian Excursion</button>
+                <button class="filter-btn px-4 py-2 bg-gray-300 rounded-md" data-filter="accommodation">Accommodation</button>
+            </div>
+            
+            <!-- Gallery Grid -->
+            <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Initial images will be loaded here -->
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="text-center mt-8">
+                <button id="load-more" class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+                    Load More
+                </button>
+            </div>
+        </div>
+    </section>
+    <!--  -->
+    <body class="relative h-screen">
+
+        <!-- Floating Action Buttons -->
+        <div class="fixed bottom-8 right-8 flex flex-col space-y-4 z-50">
+            <!-- WhatsApp Button -->
+            <a href="#" target="_blank" title="_blank"
+               class="w-14 h-14 bg-green-500 rounded-full shadow-lg flex items-center justify-center transition-transform transform hover:scale-110 hover:shadow-xl">
+                <img src="whatsapp.svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" class="w-7 h-7">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M12 20.75c4.694 0 8.5-3.806 8.5-8.5S16.694 3.75 12 3.75A8.476 8.476 0 003.5 12c0 1.378.334 2.678.926 3.826l-1.011 3.79a.75.75 0 00.94.94l3.79-1.011A8.475 8.475 0 0012 20.75z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M12 16.75c2.623 0 4.75-2.127 4.75-4.75S14.623 7.25 12 7.25a4.756 4.756 0 00-4.75 4.75c0 2.623 2.127 4.75 4.75 4.75z"/>
+                </img>
+            </a>
+    
+            <!-- Call Button -->
+            <a href="tel:+#" title="_blank"
+               class="w-14 h-14 bg-green-500 rounded-full shadow-lg flex items-center justify-center transition-transform transform hover:scale-110 hover:shadow-xl">
+                <img src="phone.svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" class="w-7 h-7">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M15.232 12.768l-2.5-2.5a1 1 0 00-1.5 1.32l.086.094 2.5 2.5a1 1 0 001.32.083l.094-.083a1 1 0 00.083-1.32l-.083-.094-2.5-2.5 2.5 2.5z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M17.586 5.414A2 2 0 0119 7v10a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 011.414-1.586L12 3.5l5.586 1.914z"/>
+                </img>
+            </a>
+        </div>
+    
+    </body>
+    
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <span class="close-btn">&times;</span>
+        <button class="nav-btn prev-btn">&lt;</button>
+        <div class="lightbox-content">
+            <img class="lightbox-img" src="" alt="">
+            <div class="caption"></div>
+        </div>
+        <button class="nav-btn next-btn">&gt;</button>
+    </div>
+
+    <script>
+        // Sample image data
+        const imageData = [
+            // Osian Excursion Images
+            { 
+                src: "https://osianresortsandcamps.com/wp-content/uploads/2020/09/osian2.jpg",
+                alt: "Safari in Osian",
+                caption: "Safari in Osian",
+                category: "osian-excursion"
+            },
+            { 
+                src: "https://osianresortsandcamps.com/wp-content/uploads/2020/08/bird2.jpg",
+                alt: "Safari in Osian",
+                caption: "Safari in Osian",
+                category: "osian-excursion"
+            },
+            { 
+                src: "https://osianresortsandcamps.com/wp-content/uploads/2020/08/heri3.jpg",
+                alt: "Osian Desert Safari",
+                caption: "Osian Desert Safari",
+                category: "osian-excursion"
+            },
+            { 
+                src: "https://osianresortsandcamps.com/wp-content/uploads/2020/08/village3.jpg",
+                alt: "Osian Desert Safari Camp",
+                caption: "Osian Desert Safari Camp",
+                category: "osian-excursion"
+            },
+            { 
+                src: "https://osianresortsandcamps.com/wp-content/uploads/2020/08/village2.jpg",
+                alt: "Pot Making in Osian",
+                caption: "Pot Making in Osian",
+                category: "osian-excursion"
+            },
+            { 
+                src: "https://osianresortsandcamps.com/wp-content/uploads/2020/09/Copy-of-20200109081105_IMG_4682.jpg",
+                alt: "Bird Watching in Osian",
+                caption: "Bird Watching in Osian",
+                category: "osian-excursion"
+            },
+            
+            // Accommodation Images
+            { 
+                src: "https://osianresortsandcamps.com/wp-content/uploads/2020/09/shikar-1.jpg",
+                alt: "Camping in Osian",
+                caption: "Camping in Osian",
+                category: "accommodation"
+            },
+            { 
+                src: "https://osianresortsandcamps.com/wp-content/uploads/2020/09/shikar2.jpg",
+                alt: "Camping in Jodhpur",
+                caption: "Camping in Jodhpur",
+                category: "accommodation"
+            },
+            { 
+                src: "https://osianresortsandcamps.com/wp-content/uploads/2020/08/tent1.jpg",
+                alt: "Camping Near Jodhpur",
+                caption: "Camping Near Jodhpur",
+                category: "accommodation"
+            },
+            { 
+                src: "https://osianresortsandcamps.com/wp-content/uploads/2020/09/wed5.jpg",
+                alt: "Wedding in jodhpur",
+                caption: "Wedding in jodhpur",
+                category: "accommodation"
+            },
+            { 
+                src: "https://osianresortsandcamps.com/wp-content/uploads/2020/08/tent2.jpg",
+                alt: "Wedding in Osian",
+                caption: "Wedding in Osian",
+                category: "accommodation"
+            },
+            { 
+                src: "https://osianresortsandcamps.com/wp-content/uploads/2020/08/tent4.jpg",
+                alt: "wedding in jodhpur",
+                caption: "wedding in jodhpur",
+                category: "accommodation"
+            },
+            // Additional images for load more
+            { 
+                src: "https://osianresortsandcamps.com/wp-content/uploads/2020/08/Delux1.jpg",
+                alt: "Camping Resort in Osian",
+                caption: "Camping Resort in Osian",
+                category: "accommodation"
+            },
+            { 
+                src: "https://osianresortsandcamps.com/wp-content/uploads/2020/08/tent3.jpg",
+                alt: "Luxury Camp Resorts Jodhpur",
+                caption: "Luxury Camp Resorts Jodhpur",
+                category: "accommodation"
+            },
+            { 
+                src: "https://osianresortsandcamps.com/wp-content/uploads/2020/09/osian1.jpg",
+                alt: "Bird Watching in Osian",
+                caption: "Bird Watching in Osian",
+                category: "osian-excursion"
+            },
+            { 
+                src: "https://osianresortsandcamps.com/wp-content/uploads/2020/09/osian3.jpg",
+                alt: "Camping Near Jodhpur",
+                caption: "Camping Near Jodhpur",
+                category: "osian-excursion"
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryContainer = document.getElementById('gallery-container');
+            const loadMoreBtn = document.getElementById('load-more');
+            let visibleImages = 8; // Initial number of images to show
+            let currentFilter = 'all';
+            
+            // Initialize gallery
+            renderGallery();
+            
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'text-white'));
+                    filterButtons.forEach(btn => btn.classList.add('bg-gray-300'));
+                    button.classList.add('active', 'bg-blue-600', 'text-white');
+                    button.classList.remove('bg-gray-300');
+                    
+                    currentFilter = button.getAttribute('data-filter');
+                    visibleImages = 8; // Reset to initial count when changing filter
+                    renderGallery();
+                    
+                    // Show load more button if there are more images to show
+                    if (getFilteredImages().length > visibleImages) {
+                        loadMoreBtn.style.display = 'inline-block';
+                    } else {
+                        loadMoreBtn.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Get filtered images based on current filter
+            function getFilteredImages() {
+                if (currentFilter === 'all') {
+                    return imageData;
+                }
+                return imageData.filter(img => img.category === currentFilter);
+            }
+            
+            // Render gallery based on current filter and visible images count
+            function renderGallery() {
+                galleryContainer.innerHTML = '';
+                const filteredImages = getFilteredImages();
+                const imagesToShow = filteredImages.slice(0, visibleImages);
+                
+                imagesToShow.forEach((imgData, index) => {
+                    const galleryItem = document.createElement('div');
+                    galleryItem.className = `gallery-item ${imgData.category} relative overflow-hidden rounded-lg shadow-lg`;
+                    
+                    galleryItem.innerHTML = `
+                        <img src="${imgData.src}" 
+                             alt="${imgData.alt}" 
+                             class="w-full h-64 object-cover cursor-pointer"
+                             data-caption="${imgData.caption}">
+                        <div class="view-overlay">
+                            <div class="view-text">View</div>
+                        </div>
+                    `;
+                    
+                    galleryContainer.appendChild(galleryItem);
+                });
+                
+                // Initialize lightbox for newly added images
+                initLightbox();
+            }
+            
+            // Lightbox functionality
+            function initLightbox() {
+                const lightbox = document.querySelector('.lightbox');
+                const lightboxImg = document.querySelector('.lightbox-img');
+                const lightboxCaption = document.querySelector('.caption');
+                const closeBtn = document.querySelector('.close-btn');
+                const prevBtn = document.querySelector('.prev-btn');
+                const nextBtn = document.querySelector('.next-btn');
+                
+                let currentImageIndex = 0;
+                const images = Array.from(document.querySelectorAll('.gallery-item img'));
+                const filteredImages = getFilteredImages();
+                
+                // Open lightbox when clicking on an image
+                images.forEach((img, index) => {
+                    img.addEventListener('click', () => {
+                        currentImageIndex = index;
+                        updateLightbox();
+                        lightbox.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    });
+                });
+                
+                // Close lightbox
+                closeBtn.addEventListener('click', () => {
+                    lightbox.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+                
+                // Navigate between images
+                prevBtn.addEventListener('click', () => {
+                    currentImageIndex = (currentImageIndex - 1 + filteredImages.length) % filteredImages.length;
+                    updateLightbox();
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    currentImageIndex = (currentImageIndex + 1) % filteredImages.length;
+                    updateLightbox();
+                });
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (lightbox.style.display === 'flex') {
+                        if (e.key === 'Escape') {
+                            lightbox.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        } else if (e.key === 'ArrowLeft') {
+                            currentImageIndex = (currentImageIndex - 1 + filteredImages.length) % filteredImages.length;
+                            updateLightbox();
+                        } else if (e.key === 'ArrowRight') {
+                            currentImageIndex = (currentImageIndex + 1) % filteredImages.length;
+                            updateLightbox();
+                        }
+                    }
+                });
+                
+                // Update lightbox content
+                function updateLightbox() {
+                    const currentImage = filteredImages[currentImageIndex];
+                    lightboxImg.setAttribute('src', currentImage.src);
+                    lightboxImg.setAttribute('alt', currentImage.alt);
+                    lightboxCaption.textContent = currentImage.caption || currentImage.alt;
+                }
+                
+                // Close when clicking outside image
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) {
+                        lightbox.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+            
+            // Initialize lightbox for first render
+            initLightbox();
+            
+            // Load more functionality
+            loadMoreBtn.addEventListener('click', () => {
+                const filteredImages = getFilteredImages();
+                visibleImages += 4; // Load 4 more images
+                
+                if (visibleImages >= filteredImages.length) {
+                    visibleImages = filteredImages.length;
+                    loadMoreBtn.style.display = 'none';
+                }
+                
+                renderGallery();
+                
+                // Scroll to the newly loaded images
+                const galleryItems = document.querySelectorAll('.gallery-item');
+                if (galleryItems.length > 0) {
+                    galleryItems[galleryItems.length - 1].scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'nearest' 
+                    });
+                }
+            });
+            
+            // Hide load more button if all images are already visible
+            if (getFilteredImages().length <= visibleImages) {
+                loadMoreBtn.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
